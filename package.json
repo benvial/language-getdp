@@ -1,6 +1,6 @@
 {
   "name": "language-getdp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Syntax highlighting for GetDP .pro files in Atom",
   "keywords": [],
   "repository": "https://github.com/benvial/language-getdp",
