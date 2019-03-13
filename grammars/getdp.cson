@@ -1,0 +1,142 @@
+'fileTypes': [
+    'pro'
+]
+'name': 'getdp'
+'patterns': [
+    {
+        'include': '#number'
+    }
+    {
+        'include': '#string_single'
+    }
+    {
+        'include': '#string_double'
+    }
+    {
+        'begin': '\\b(For)\\b\\s*(?:|([a-zA-Z]\\w*)\\s*(In)\\s*)(\\(|\\{)'
+        'beginCaptures':
+            '1':
+                'name': 'keyword.other.iteration.getdp'
+            '2':
+                'name': 'variable.other.getdp'
+            '3':
+                'name': 'keyword.other.iteration.getdp'
+            '4':
+                'name': 'punctuation.definition.range.begin.getdp'
+        'comment': 'There are two forms: numeric For ( expression : expression : expression ) string based For string In { expression : expression : expression }.'
+        'end': '(\\)|\\})'
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.range.end.getdp'
+        'name': 'meta.structure.iteration.getdp'
+        'patterns': [
+            'include': '#number'
+            'include': '#operator'
+            'include': '#string_double'
+            'include': '#string_single'
+            {
+               'match': ':'
+               'name': 'punctuation.separator.range.getdp'
+            }
+        ]
+    }
+    {
+        'match': '\\b(EndFor)\\b'
+        'name': 'keyword.other.iteration.getdp'
+    }
+    {
+    'begin': '\\/\\*'
+    'captures':
+      '0':
+        'name': 'punctuation.definition.comment.getdp'
+    'end': '\\*\\/'
+    'name': 'comment.block.getdp'
+    }
+    {
+        'captures':
+            '1':
+                'name': 'punctuation.definition.comment.getdp'
+        'match': '(?<!\\$)(\/\/)(?!\\{).*$\\n?'
+        'name': 'comment.line.number-sign.getdp'
+    }
+    {
+      'match' : '(Call|Function|Macro)\\s*([a-zA-Z]\\w*)'
+      'captures':
+        '1':
+          'name' : 'keyword.other.command.getdp'
+        '2':
+          'name' : 'support.function.getdp'
+    }
+    {
+      'match' :'\\b(If|ElseIf|Else|EndIf|Return)\\b'
+      'name' : 'keyword.control.getdp'
+    }
+    {
+        'match': '\\b(Region|Global|NodesOf|EdgesOf|FacetsOf|VolumesOf|ElementsOf|GroupsOfNodesOf|GroupsOfEdgesOf|GroupsOfEdgesOnNodesOf|EdgesOfTreeIn|FacetsOfTreeIn|DualNodesOf|DualEdgesOf|DualFacetsOf|DualVolumesOf)\\b'
+        'name': 'keyword.other.command.getdp'
+    }
+    {
+        'match': '\\b(Analytic|Branch|DefineConstant|DefineFunction|DefineGroup|DestinationSystem|Entity|EntitySubType|EntityType|GeoElement|In|Include|IndexOfSystem|InterpolationBilinear|List|ListAlt|ListFromFile|Loop|Name|NameOfBasisFunction|NameOfFormulation|NameOfPostProcessing|NameOfCoef|NameOfConstraint|NameOfMesh|NameOfResolution|NameOfSpace|Not|NumberOfPoints|OnOneSideOf|OriginSystem|Solver|StartingOn|StrCat|SubRegion|Support|Symmetry|TimeFunction|RegionRef|Coefficient|Type|Dof|BF|d|Grad|Curl|Rot|Div|dInv|GradInv|CurlInv|RotInv|DivInv|ComplexValue)\\b'
+        'name': 'support.class.getdp'
+    }
+    {
+        'match': '\\b(Hypot|Rand|Fmod|Fabs|Floor|Exp|Ceil|Modulo|Log|Log10|ArcCos|Acos|Asin|ArcSin|Atan|ArcTan|Atan2|ArcTan2|Ceil|Cos|Cosh|Floor|Hypot|Rand|Round|Sqrt|Sin|Sinh|Tan|Tanh|Cross|Hypot|Norm|SquNorm|Unit|Transpose|TTrace|F_Cos_wt_p|F_Sin_wt_p|F_Period|Laplace|GradLaplace|Helmholtz|GradHelmholtz|Complex|Re|Im|Vector|Tensor|TensorV|TensorSym|TensorDiag|CompX|CompY|CompZ|CompXX|CompXY|CompXZ|CompYX|CompYY|CompYZ|CompZX|CompZY|CompZZ|X|Y|Z|XYZ)\\b'
+        'name': 'support.function.getdp'
+    }
+    {
+        'match':'\\b(Printf|Normal|NormalSource|F_CompElementNum|InterpolationLinear|dInterpolationLinear|InterpolationAkima|dInterpolationAkima|Order|Assign|Init|AssignFromResolution|InitFromResolution|Network|Link|LinkCplx|Form0|Form1|Form2|Form3|Form1P|Form2P|Scalar|Vector|BF_Node_2E|BF_Node|BF_Edge|BF_Facet|BF_Volume|BF_GradNode|BF_CurlEdge|BF_DivFacet|BF_GroupOfNodes|BF_GradGroupOfNodes|BF_GroupOfEdges|BF_CurlGroupOfEdges|BF_PerpendicularEdge|BF_CurlPerpendicularEdge|BF_GroupOfPerpendicularEdge|BF_CurlGroupOfPerpendicularEdge|BF_PerpendicularFacet|BF_DivPerpendicularFacet|BF_Region|BF_RegionX|BF_RegionY|BF_RegionZ|BF_Global|BF_dGlobal|BF_NodeX|BF_NodeY|BF_NodeZ|BF_Zero|BF_One|AliasOf|AssociatedWith|Vol|Sur|Lin|VolAxi|SurAxi|VolAxiSqu|VolSphShell|VolAxiSphShell|VolAxiSquSphShell|VolRectShell|VolAxiRectShell|VolAxiSquRectShell|Gauss|GaussLegendre|Line|Triangle|Quadrangle|Tetrahedron|Hexahedron|Prism|Pyramid|Point|FemEquation|Galerkin|deRham|Local|Global|Integral|Dt|DtDof|DtDt|DtDtDof|JacNL|NeverDt|Evaluate|Generate|Solve|SolveAgain|EigenSolve|GenerateRHSGroup|EigenvalueLegend|GenerateJac|SolveJac|GenerateSeparate|Update|InitSolution|SaveSolution|SaveSolutions|TransferSolution|TransferInitSolution|SetTime|SetFrequency|SystemCommand|If|EndIf|Else|Print|Lanczos|FourierTransform|TimeLoopTheta|TimeLoopNewmark|IterativeLoop|OnElementsOf|OnRegion|OnGlobal|OnSection|OnGrid|OnPoint|OnLine|OnPlane|OnBox|File|Depth|Skin|Smoothing|HarmonicToTime|Dimension|TimeStep|Frequency|Format|Adapt|Target|Value|Sort|Iso|NoNewLine|ChangeOfCoordinates|ChangeOfValues|Gmsh|GmshOpen|GmshParsed|SimpleTable|NodeTable|Table|TimeTable|Gnuplot|Adaptation)\\b'
+        'name': 'support.function.string.getdp'
+    }
+    {
+        'match': '\\b(Time|DTime|Theta|TimeStep|Iteration|X|XS|Y|YS|Z|ZS|A|B|C)\\b'
+        'name': 'constant.language.getdp'
+    }
+    {
+        'match': '\\b(Macro|Group|Function|Constraint|FunctionSpace|Jacobian|Integration|Formulation|Resolution|PostProcessing|PostOperation)\\b'
+        'name': 'storage.type.getdp'
+    }
+    {
+        'match': '\\b(Case|Equation|BasisFunction|Quantity|SubSpace|GlobalQuantity|Operation|System|UsingPost)\\b'
+        'name': 'keyword.other.getdp'
+    }
+    {
+        'match': '\\b(Pi|0D|1D|2D|3D|All)\\b'
+        'name': 'constant.other.type.getdp'
+    }
+]
+'repository':
+    'number':
+        'comment': 'borrowed from textmate book'
+        'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))\\b'
+        'name': 'constant.numeric.getdp'
+    'operator':
+        'comment': 'Operator symbols'
+        'match': '\\s*(==|~=|>|>=|<|<=|&|&&|:|\\||\\|\\||\\+|-|\\*|\\.\\*|/|\\./|\\\\|\\.\\\\|\\^|\\.\\^)\\s*'
+        'name': 'keyword.operator.symbols.getdp'
+    'string_double':
+        'begin': '"'
+        'beginCaptures':
+            '0':
+                'name': 'punctuation.definition.string.begin.getdp'
+        'end': '"'
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.string.end.getdp'
+        'name': 'string.quoted.double.getdp'
+        'patterns': [
+            {
+                'match': '\\[\\$`"\\\\\n]'
+                'name': 'constant.character.escape.getdp'
+            }
+        ]
+    'string_single':
+        'begin': "'"
+        'beginCaptures':
+            '0':
+                'name': 'punctuation.definition.string.begin.getdp'
+        'end': "'"
+        'endCaptures':
+            '0':
+                'name': 'punctuation.definition.string.end.getdp'
+        'name': 'string.quoted.single.getdp'
+'scopeName': 'source.getdp'
