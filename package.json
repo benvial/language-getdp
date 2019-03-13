@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Syntax highlighting for GetDP .pro files in Atom",
   "keywords": [],
-  "repository": "https://github.com/benvial/language-getdp/blob/master/README.md",
+  "repository": "https://github.com/benvial/language-getdp",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
